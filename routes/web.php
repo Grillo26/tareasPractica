@@ -20,6 +20,13 @@ Route::get('/', function () {
 
 Route::get('/tareas', function () {
     return view('todos.index');
-})->name('todos');;
+})->name('todos');
 
 Route::post('/tareas', [TodosController::class,'store'])->name('todos');
+
+Route::get('/tareas', [TodosController::class,'index'])->name('todos');
+
+Route::get('/tareas/{id}', [TodosController::class,'show'])->name('todos-edit');
+Route::patch('/tareas/{id}', [TodosController::class,'update'])->name('todos-update');
+
+Route::delete('/tareas/{id}', [TodosController::class,'destroy'])->name('todos-destroy');
